@@ -3,6 +3,7 @@ title: "Erasure: what survives, and what it opens for research"
 subtitle: Subtract one concept from a text's vector, rescale the remainder, re-score it — and print the arithmetic instead of asserting the result.
 author: Tim Post
 date: 2026-08-05
+draft: true
 tags:
   - Erasure
   - Geometry
