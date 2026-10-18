@@ -71,10 +71,10 @@ Grotesk and IBM Plex Mono rather than loading them from a CDN.
 ## GPL3 Compatibility 
 
 Because Aldous' only external component dependency that isn't directly owned by
-its author is Nomic Text / Vision 1.5, and because 100% of the training corpus 
-and weights of Nomic Text & Nomic Vision are released under Apache 2, the entire
-stack is technically eligible for potential forking, where the FSF can assume the
-copyright of the fork, including all dependencies.
+its author (who is the author of Aldous) is Nomic Text / Vision 1.5, and because 
+100% of the training corpus and weights of Nomic Text & Nomic Vision are released 
+under Apache 2, the entire stack is technically eligible for potential forking, 
+where the FSF can assume the copyright of the fork, including all dependencies.
 
 Nomic can be reproduced freely from source with what they include. 
 
