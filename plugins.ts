@@ -17,6 +17,7 @@ import toc from "https://deno.land/x/lume_markdown_plugins@v0.9.0/toc.ts";
 import image from "https://deno.land/x/lume_markdown_plugins@v0.9.0/image.ts";
 import footnotes from "https://deno.land/x/lume_markdown_plugins@v0.9.0/footnotes.ts";
 import callouts from "./callouts.ts";
+import imageLinks from "./image_links.ts";
 
 import "lume/types.ts";
 
@@ -112,6 +113,10 @@ export default function (userOptions?: Options) {
     // before the plugin chain so the markdown-it plugin list reads in the order
     // it is assembled.
     site.hooks.addMarkdownItPlugin(callouts());
+    // Images in markdown link to themselves at full size — see image_links.ts.
+    // Registered second so it wraps whatever the image renderer already emits,
+    // and before the content plugins get a say.
+    site.hooks.addMarkdownItPlugin(imageLinks());
 
     site
       .use(terser())

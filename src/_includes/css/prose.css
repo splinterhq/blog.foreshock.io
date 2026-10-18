@@ -145,6 +145,27 @@
   border: 1px solid var(--border);
 }
 
+/* An image inside prose is a link to its own full-resolution file — see
+   image_links.ts. It has to opt out of the prose link treatment above, or the
+   underline draws itself straight under the screenshot, and `display: block`
+   because a block-level <img> inside an inline anchor leaves a few pixels of
+   descender space beneath it. `zoom-in` is the honest affordance: the click
+   does not navigate, it opens the image. */
+.prose a.shot {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: zoom-in;
+}
+
+.prose a.shot img {
+  transition: border-color var(--t-fast) var(--ease);
+}
+
+.prose a.shot:hover img {
+  border-color: var(--accent);
+}
+
 .prose blockquote {
   border-left: 3px solid var(--border-strong);
   padding: 2px 0 2px 20px;
