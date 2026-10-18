@@ -49,7 +49,7 @@ plainly:
 Each repository has a `CONDUCT.md` or `CODE_OF_CONDUCT.md` file that explains the 
 code of content *and project-specific things to be mindful of for that repo*. 
 
-Universally, we use the [Contributor Covenant 3.0]() framework; report concerns 
+Universally, we use the [Contributor Covenant 3.0](https://www.contributor-covenant.org/version/3/0/code_of_conduct/) framework; report concerns 
 directly to `tim@foreshock.io`.
 
 If you find a repo lacks one and you'd like to participate, please contact Tim or
