@@ -79,9 +79,9 @@ copyright of the fork, including all dependencies.
 Nomic can be reproduced freely from source with what they include. 
 
 The author is willing to coordinate this if someone reaches out, but I'm not going
-to be the one that approaches RMS with an idea as wild and crazy as that will 
-initially sound. I'm `tim@foreshock.io` or `timthepost@protonmail.com`, whichever is
-preferred. 
+to be the one that approaches the FSF or RMS about it. I'm `tim@foreshock.io` or 
+`timthepost@protonmail.com`, whichever is preferred. The tools aren't really something
+I go around suggesting but something people figure out they need on their own.
 
 In any event, a GPL fork is desired because it enables a much wider enablement to the
 science on ordinary consumer-grade hardware (an i3 or better runs it all comfortably).
