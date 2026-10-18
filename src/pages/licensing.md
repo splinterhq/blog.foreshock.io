@@ -49,15 +49,19 @@ Distinguishing *prosaic* from *non-prosaic* content with explicit intent will
 resolve most potential licensing disputes before they ever bloom simply by 
 clearing up the ambiguity as to which one applies. 
 
-### Prompts That Produce Code Aren't Necessarily Prosaic
+### Prompts That Produce Code Can Be Excepted
 
-They're *definitely* probalistic and arguably a meta-language of Engilsh as much 
+Prompts are *definitely* probalistic and arguably a meta-language of Engilsh as much 
 as Trans-Atlantic Americana is, but they might not be found by someone else to be 
-*prosaic*. 
+*prosaic,* including the one who wrote them.
 
-Clarify your intent with a deliberate license comment if it's a code prompt. By 
-policy, Foreshock does not include code prompts unless absolutely necessary (and 
-currently there are zero).
+It's difficult to name circumstances where this applies except to say a carve out 
+exists so a rule designed to catch ambiguity doesn't accidentally create it.
+
+If the prompt should be CC-0, just label it in a comment or in the associated 
+documentation. You're _removing_ restrictions on what can be done with it by
+doing so, not adding them. This includes any patent protection, so be 
+thoughtful and discuss first if necessary.
 
 ## Dependencies
 
