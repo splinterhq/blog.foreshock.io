@@ -46,6 +46,10 @@ footer_columns:
         href: /feed.json
       - text: Search
         href: /archive/#search
+      - text: Foreshock Mastodon
+        href: https://mastodon.social/@foreshock
+      - text: Tim Post (Blue Sky)
+        href: https://bsky.app/profile/timthepost.bsky.social
   - title: Concepts
     links:
       - text: DACE — the method
@@ -58,14 +62,14 @@ footer_columns:
         href: https://foreshock.io/concepts/semsage.html
   - title: Project
     links:
+      - text: Main Collective Website
+        href: https://foreshock.io
       - text: Governance
         href: /governance/
       - text: Glossary
         href: /glossary/
       - text: Licensing
         href: /licensing/
-      - text: foreshock.io
-        href: https://foreshock.io
       - text: Source on Codeberg
         href: https://codeberg.org/timthepost/semsage
 
