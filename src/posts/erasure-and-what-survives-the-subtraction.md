@@ -139,11 +139,11 @@ Here's the same 'drag' before and after, presented so that emphasis is clear:
 <div class="stats" style="margin-top: .25em;">
   <div class="stat"><div class="v">2<small>%</small></div><div class="k">Corpus drag, before the fix</div></div>
   <div class="stat"><div class="v">3.1<small>%</small></div><div class="k">Corpus drag, corrected</div></div>
-  <div class="stat"><div class="v">2-0</div><div class="k">Corrected in release</div></div>
+  <div class="stat"><div class="v">Corrected: 2-0</div><div class="k">Affected: 1-0 - 1-3</div></div>
 </div>
 
 And, importantly, we knew through a simple toggle exactly why we saw the movement
-just by flipping that metric from standardized back over to raw Euclidian while running a 
+just by flipping that metric from standardized back over to raw Euclidian while running 
 [a diverse swath](https://codeberg.org/timthepost/semsage/src/branch/main/train/tests)
 through the public-works harness, since we could flip it so conveniently and knowingly 
 between runs.
