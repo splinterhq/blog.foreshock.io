@@ -1,0 +1,8 @@
+type: post
+layout: layouts/post.vto
+
+metas:
+  title: "=title"
+  description: "=description"
+  type: article
+  image: /assets/og-image.png

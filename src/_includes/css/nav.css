@@ -1,0 +1,176 @@
+/* ============================================================ nav */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  height: 64px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  flex: none;
+}
+
+/* overflow: visible so the round stroke caps are not clipped by the tight
+   viewBox — the trace bleeds a little, by design. */
+.logo svg {
+  overflow: visible;
+  flex: none;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.nav__link {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--dim);
+  padding: 7px 11px;
+  border-radius: var(--r-sm);
+  transition: color var(--t-fast) var(--ease), background-color var(--t-fast)
+    var(--ease);
+  white-space: nowrap;
+}
+
+.nav__link:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.nav__link.is-active {
+  color: var(--accent);
+}
+
+.nav__sep {
+  width: 1px;
+  height: 20px;
+  background: var(--border-strong);
+  margin-inline: 8px;
+  flex: none;
+}
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 6px;
+}
+
+/* ---- theme toggle ---- */
+.theme {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border-ui);
+  border-radius: var(--r-md);
+  color: var(--dim);
+  transition:
+    color var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease),
+    background-color var(--t-fast) var(--ease);
+  flex: none;
+}
+
+.theme:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.theme svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* The glyph shows the state the button is IN, not the one it will move to.
+   Keying it off a single pressed/not-pressed flag instead collapses `system`
+   and `light` onto the same picture, and since a light-preferring system
+   already renders `system` as light, that click changed nothing at all and read
+   as a dead control. One glyph per state means every click changes something.
+   The `data-mode` on the button is written by main.js; `system` is in the
+   markup so the control is correct before the runtime arrives. */
+.theme [data-mode] {
+  display: none;
+}
+
+.theme[data-mode='system'] [data-mode='system'],
+.theme[data-mode='light'] [data-mode='light'],
+.theme[data-mode='dark'] [data-mode='dark'] {
+  display: block;
+}
+
+/* ---- burger ---- */
+.nav__burger {
+  display: none;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid var(--border-ui);
+  border-radius: var(--r-md);
+  color: var(--dim);
+  margin-left: auto;
+}
+
+.nav__burger:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+@media (max-width: 1080px) {
+  .nav__burger {
+    display: grid;
+  }
+
+  .nav__links {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    padding: 14px var(--gutter) 20px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 20px 40px -24px rgb(0 0 0 / 0.5);
+  }
+
+  .nav__links.is-open {
+    display: flex;
+  }
+
+  .nav__sep {
+    display: none;
+  }
+
+  .nav__actions {
+    margin: 10px 0 0;
+    justify-content: flex-start;
+  }
+
+  .nav__link {
+    padding: 11px 10px;
+  }
+}

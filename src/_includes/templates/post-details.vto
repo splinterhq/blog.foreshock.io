@@ -1,0 +1,30 @@
+{{# Post metadata: author, date, reading time, tags.
+    Included by the post header and by every entry in the archive list, so it
+    takes its values as parameters rather than reading page data directly. #}}
+<div class="post-details">
+  {{ if date }}
+    <p><time datetime="{{ dateISO }}">{{ dateHuman }}</time></p>
+  {{ /if }}
+
+  {{ if readingInfo?.minutes }}
+    <p>{{ readingInfo.minutes }} {{ i18n.post.reading_time }}</p>
+  {{ /if }}
+
+  {{ if author }}
+    {{ set page = search.page(`type=author author="${author}"`) }}
+    <p>{{ i18n.post.by }}{{ if page }}&nbsp;<a href="{{ page.url }}">{{ author }}</a>{{ else }}&nbsp;{{ author }}{{ /if }}</p>
+  {{ /if }}
+
+  {{ if tags?.length }}
+    <div class="post-tags">
+      {{ for tag of tags }}
+        {{ set page = search.page(`type=tag tag="${tag}"`) }}
+        {{ if page }}
+          <a class="chip" href="{{ page.url }}" data-pagefind-filter="filter">{{ tag }}</a>
+        {{ else }}
+          <span class="chip">{{ tag }}</span>
+        {{ /if }}
+      {{ /for }}
+    </div>
+  {{ /if }}
+</div>

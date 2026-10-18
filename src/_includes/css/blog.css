@@ -1,0 +1,683 @@
+/* ============================================================
+   BLOG
+   Everything specific to the reading experience: the post header, the
+   archive list, pagination, the table of contents, search results and the
+   comment embed. Built out of the same tokens as the rest of the site —
+   no new colours, no new radii.
+   ============================================================ */
+
+/* ============================================================ post header */
+
+.post-head {
+  padding-top: clamp(40px, 6vw, 76px);
+  padding-bottom: clamp(22px, 3vw, 36px);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: clamp(34px, 4vw, 56px);
+}
+
+.post-head h1 {
+  max-width: 20ch;
+}
+
+/* The standfirst. Uses --muted rather than --dim so it stays comfortably
+   above 4.5:1 on --bg while still reading as secondary to the title. */
+.post-head .standfirst {
+  font-size: clamp(1.04rem, 1.6vw, 1.3rem);
+  color: var(--muted);
+  line-height: 1.5;
+  max-width: 60ch;
+  margin-top: 20px;
+  text-wrap: pretty;
+}
+
+/* ---- post details: date, reading time, author, tags ----
+   One mono line, bullet-separated, exactly the way the instrument readouts
+   sit under the concept-page headings. */
+.post-details {
+  display: flex;
+  flex-flow: row wrap;
+  row-gap: 0.7em;
+  column-gap: 0.9em;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--dim);
+  margin-top: 22px;
+}
+
+.post-details p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.55em;
+}
+
+.post-details p + p {
+  position: relative;
+}
+
+.post-details p + p::before {
+  content: '·';
+  color: var(--faint);
+  margin-right: 0.35em;
+}
+
+.post-details a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color var(--t-fast) var(--ease), border-color var(--t-fast)
+    var(--ease);
+}
+
+.post-details a:hover {
+  color: var(--accent);
+  border-bottom-color: rgb(var(--accent-rgb) / 0.5);
+}
+
+.post-details time {
+  color: var(--muted);
+}
+
+.post-tags {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+/* The tag row sits on its own line under the metadata: a tag chip is an
+   interactive target, and interleaving it with the readout dots made the
+   whole line look clickable. */
+.post-details .post-tags {
+  flex-basis: 100%;
+  margin-top: 4px;
+}
+
+/* ============================================================ archive list
+   A readout, not a stack of cards: the date column is fixed-width mono, the
+   entry body takes the rest. On a narrow screen the column collapses and the
+   date rides above the title. */
+
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--border);
+}
+
+.post-list > li {
+  border-bottom: 1px solid var(--border);
+  transition: background-color var(--t-fast) var(--ease);
+}
+
+.post-list > li:hover {
+  background: var(--surface-2);
+}
+
+.post-list__entry {
+  display: grid;
+  grid-template-columns: 128px minmax(0, 1fr);
+  gap: clamp(16px, 3vw, 36px);
+  padding-block: clamp(22px, 3vw, 30px);
+  align-items: baseline;
+}
+
+@media (max-width: 640px) {
+  .post-list__entry {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+}
+
+.post-list__meta {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--dim);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.post-list__meta .reading {
+  color: var(--faint);
+  font-size: 0.68rem;
+}
+
+/* The title's link owns the whole row: the pseudo-element stretches it over
+   the entry so the entire strip is a click target, while the underline stays
+   on the title text alone. */
+.post-list__entry {
+  position: relative;
+}
+
+.post-list__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.15rem, 2.1vw, 1.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  color: var(--text);
+  display: inline-block;
+  transition: color var(--t-fast) var(--ease);
+}
+
+.post-list__title a {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: text-decoration-color var(--t-fast) var(--ease);
+}
+
+.post-list__entry:hover .post-list__title a {
+  text-decoration-color: rgb(var(--accent-rgb) / 0.5);
+}
+
+.post-list__title:hover,
+.post-list__entry:hover .post-list__title {
+  color: var(--accent);
+}
+
+.post-list__excerpt {
+  color: var(--muted);
+  margin-top: 10px;
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+
+.post-list__excerpt > :first-child {
+  margin-top: 0;
+}
+
+.post-list__excerpt > :last-child {
+  margin-bottom: 0;
+}
+
+/* The row link's overlay covers the whole entry, so anything inside it that
+   is itself a link — the tags — has to sit above the overlay or it becomes
+   unclickable. This is the only reason the chips are positioned. */
+.post-list__tags {
+  margin-top: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.post-list__tags .chip {
+  font-size: 0.68rem;
+  padding: 4px 10px;
+}
+
+/* the current page in a list, e.g. an archive page that lists itself */
+.post-list__title[aria-current='page'] {
+  color: var(--accent);
+}
+
+/* ---- compact list: the homepage teaser ---- */
+.post-list--compact .post-list__entry {
+  grid-template-columns: 108px minmax(0, 1fr);
+  padding-block: 20px;
+}
+
+.post-list--compact .post-list__title {
+  font-size: clamp(1.05rem, 1.7vw, 1.22rem);
+}
+
+@media (max-width: 640px) {
+  .post-list--compact .post-list__entry {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ============================================================ archive header */
+
+.archive-head {
+  padding-top: clamp(40px, 6vw, 76px);
+  padding-bottom: clamp(20px, 2.5vw, 30px);
+}
+
+.archive-head .lead {
+  max-width: 62ch;
+  margin-top: 18px;
+}
+
+.archive-nav {
+  margin-top: clamp(26px, 3vw, 38px);
+}
+
+.archive-nav + .archive-nav {
+  margin-top: 22px;
+}
+
+.archive-nav .label {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.archive-nav .chips .chip {
+  text-transform: none;
+  letter-spacing: 0.01em;
+}
+
+.archive-nav .chip[aria-current='page'] {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-glow);
+}
+
+/* ---- feed links, styled as a mono cue rather than a paragraph ---- */
+.feed-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  align-items: center;
+  margin-top: 24px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--dim);
+}
+
+.feed-links a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgb(var(--accent-rgb) / 0.4);
+  transition: border-color var(--t-fast) var(--ease);
+}
+
+.feed-links a:hover {
+  border-bottom-color: currentColor;
+}
+
+/* ============================================================ pagination
+   Prev / next as full-width halves, so the target is the whole half of the
+   bar rather than a word. */
+
+.pagination {
+  margin-top: clamp(34px, 4vw, 56px);
+  border-top: 1px solid var(--border);
+}
+
+.pagination__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--border);
+}
+
+@media (max-width: 640px) {
+  .pagination__list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.pagination__item {
+  background: var(--bg);
+  padding: 20px 4px;
+}
+
+.pagination__item--next {
+  text-align: right;
+}
+
+.pagination__item--empty {
+  background: var(--bg);
+}
+
+.pagination__link {
+  display: block;
+  padding: 4px;
+}
+
+.pagination__label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 8px;
+}
+
+.pagination__title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  line-height: 1.3;
+  color: var(--text);
+  text-wrap: balance;
+  transition: color var(--t-fast) var(--ease);
+}
+
+.pagination__link:hover .pagination__title {
+  color: var(--accent);
+}
+
+/* The numbered strip under the halves, e.g. "Page 2 of 5". */
+.pagination__nums {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-top: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--dim);
+}
+
+.pagination__nums a,
+.pagination__nums span {
+  padding: 4px 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: 100px;
+  color: var(--dim);
+}
+
+.pagination__nums a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.pagination__nums [aria-current='page'] {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-glow);
+}
+
+/* ---- post footer nav: older / newer post ---- */
+.post-nav {
+  margin-top: clamp(44px, 5vw, 72px);
+  padding-top: clamp(28px, 3vw, 40px);
+  border-top: 1px solid var(--border);
+}
+
+.post-nav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .post-nav__list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.post-nav__item {
+  background: var(--surface);
+  padding: clamp(18px, 2.4vw, 24px);
+}
+
+.post-nav__item--next {
+  text-align: right;
+}
+
+.post-nav__link {
+  display: block;
+}
+
+.post-nav__link:hover .pagination__title {
+  color: var(--accent);
+}
+
+/* ============================================================ table of contents
+   The rail is .mnav (nav.css/layout.css); this only adds the nested levels
+   that the toc plugin emits for h3/h4. */
+
+.mnav ol,
+.mnav .toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mnav .toc-list ol {
+  padding-left: 12px;
+  border-left: 1px solid var(--border);
+  margin-top: 4px;
+}
+
+.mnav .toc-list a {
+  font-size: 0.72rem;
+  padding: 4px 12px;
+  opacity: 0.85;
+}
+
+.mnav .toc-list a:hover {
+  opacity: 1;
+}
+
+/* An empty rail leaves a 216px hole beside the body, so when a post is short
+   enough to have no headings the whole layout collapses to one column. */
+.mlayout--no-toc {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* ============================================================ search
+   Pagefind's UI with its own reset turned off (plugins.ts), so these rules
+   are the whole of its appearance. Class names come from Pagefind itself and
+   are not ours to rename. */
+
+#search {
+  margin-top: clamp(24px, 3vw, 34px);
+}
+
+.pagefind-ui {
+  font-family: var(--font-body);
+  color: var(--text);
+}
+
+.pagefind-ui__search-input {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border-ui);
+  border-radius: var(--r-md);
+  padding: 11px 14px;
+  transition: border-color var(--t-fast) var(--ease), box-shadow var(--t-fast)
+    var(--ease);
+}
+
+.pagefind-ui__search-input::placeholder {
+  color: var(--faint);
+}
+
+.pagefind-ui__search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.pagefind-ui__search-hint {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--dim);
+  margin-top: 10px;
+}
+
+.pagefind-ui__search-hint kbd {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-sm);
+  padding: 1px 5px;
+  background: var(--surface-2);
+  color: var(--muted);
+}
+
+.pagefind-ui__results-list {
+  list-style: none;
+  padding: 0;
+  margin: 26px 0 0;
+}
+
+.pagefind-ui__results-list > li {
+  padding-block: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pagefind-ui__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.pagefind-ui__title a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color var(--t-fast) var(--ease);
+}
+
+.pagefind-ui__title a:hover {
+  color: var(--accent);
+}
+
+.pagefind-ui__meta {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--dim);
+  margin-top: 6px;
+}
+
+.pagefind-ui__meta-type {
+  color: var(--accent);
+  margin-right: 0.6em;
+}
+
+.pagefind-ui__result-excerpt {
+  font-size: 0.92rem;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.pagefind-ui__result-excerpt mark {
+  background: var(--accent-glow);
+  color: var(--accent);
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+.pagefind-ui__filters {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--dim);
+}
+
+.pagefind-ui__filter-value {
+  border: 1px solid var(--border-strong);
+  border-radius: 100px;
+  padding: 4px 11px;
+  color: var(--dim);
+}
+
+.pagefind-ui__filter-value:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.pagefind-ui__empty {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--dim);
+  padding-block: 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pagefind-ui__message {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  padding-block: 18px;
+}
+
+.pagefind-ui__load-more {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+  background: none;
+  border: 1px solid var(--border-ui);
+  border-radius: var(--r-md);
+  padding: 9px 16px;
+  margin-top: 22px;
+  width: 100%;
+  transition: border-color var(--t-fast) var(--ease);
+}
+
+.pagefind-ui__load-more:hover {
+  border-color: var(--accent);
+}
+
+/* ============================================================ comments
+   Mastodon / Bluesky replies. The third-party element only loads when a post
+   declares comments, so these rules cost nothing until then. */
+
+.comments {
+  margin-top: clamp(44px, 5vw, 72px);
+  padding-top: clamp(28px, 3vw, 40px);
+  border-top: 1px solid var(--border);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.comments__header h2 {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 14px;
+}
+
+.comments__header p {
+  max-width: var(--measure);
+  margin-bottom: 26px;
+}
+
+.comments__header a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+mastodon-comments {
+  display: block;
+  max-width: 100%;
+}
+
+/* ============================================================ 404
+   The instrument reads a flat line: a page that does not exist is a missing
+   key, not an error to dress up. */
+
+.notfound {
+  padding-block: clamp(64px, 10vw, 120px);
+}
+
+.notfound__inner {
+  max-width: 56ch;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.notfound .btn-row {
+  justify-content: center;
+}

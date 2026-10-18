@@ -1,0 +1,43 @@
+{{# Numbered pagination for generated list pages (archive, tag, author).
+    Uses Lume's `pagination` object: { page, previous, next, totalPages }, plus
+    the `pageUrls` array the generators add — Lume does not provide one. #}}
+{{ if pagination.totalPages > 1 }}
+  <nav class="pagination" aria-label="Pagination">
+    <ul class="pagination__list">
+      {{ if pagination.previous }}
+        <li class="pagination__item pagination__item--prev">
+          <a class="pagination__link" href="{{ pagination.previous }}" rel="prev">
+            <span class="pagination__label">{{ i18n.nav.previous }}</span>
+            <span class="pagination__title">{{ i18n.nav.previous_page }}</span>
+          </a>
+        </li>
+      {{ else }}
+        <li class="pagination__item pagination__item--empty" aria-hidden="true"></li>
+      {{ /if }}
+
+      {{ if pagination.next }}
+        <li class="pagination__item pagination__item--next">
+          <a class="pagination__link" href="{{ pagination.next }}" rel="next">
+            <span class="pagination__label">{{ i18n.nav.next }}</span>
+            <span class="pagination__title">{{ i18n.nav.next_page }}</span>
+          </a>
+        </li>
+      {{ else }}
+        <li class="pagination__item pagination__item--empty" aria-hidden="true"></li>
+      {{ /if }}
+    </ul>
+
+    {{ if pageUrls?.length > 2 }}
+      <div class="pagination__nums">
+        <span>{{ i18n.nav.page }} {{ pagination.page }} {{ i18n.nav.of }} {{ pagination.totalPages }}</span>
+        {{ for pageIndex, pageUrl of pageUrls }}
+          {{ if pageIndex + 1 == pagination.page }}
+            <span aria-current="page">{{ pageIndex + 1 }}</span>
+          {{ else }}
+            <a href="{{ pageUrl }}">{{ pageIndex + 1 }}</a>
+          {{ /if }}
+        {{ /for }}
+      </div>
+    {{ /if }}
+  </nav>
+{{ /if }}

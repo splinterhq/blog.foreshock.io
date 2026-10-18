@@ -1,0 +1,4 @@
+# Every file in this folder is a standalone page, not a post: the page layout
+# supplies the hero, the prose measure and the search index markers, and the
+# page's own front matter supplies the title, subtitle and eyebrow.
+layout: layouts/page.vto

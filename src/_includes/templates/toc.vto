@@ -1,0 +1,13 @@
+{{# Table of contents rail, rendered from the `toc` markdown plugin.
+    Recursive: called with `items`, and again for each level of children.
+    Expects `items` to be an array of { slug, text, children }. #}}
+<ol class="toc-list">
+  {{ for item of items }}
+    <li>
+      <a href="#{{ item.slug }}">{{ item.text }}</a>
+      {{ if item.children?.length }}
+        {{ include "templates/toc.vto" { items: item.children } }}
+      {{ /if }}
+    </li>
+  {{ /for }}
+</ol>

@@ -1,0 +1,84 @@
+lang: en
+
+# Shown on the homepage hero, above the title
+home:
+  eyebrow_index: Field Notes
+  eyebrow: From The Human Affective Semantic Wavefront
+  title: Understanding the nature of expressed human intent, one vector at a time.
+  lead: >-
+    High-signal, low-noise observations from <a href="https://foreshock.io">the Foreshock semantic surfboard</a>.
+  seismograph: false
+  show_eyebrow: false
+
+# Static links appended to the navigation, after the menu pages
+menu_links: []
+
+# The footer note under the logo
+footer_note: >-
+  Read the room, never the message. Geometry, not a black box. Prose is CC-0;
+  code is Apache-2.0.
+
+footer_quote: >-
+  "*Words can be like X-rays if you use them properly — they'll go through
+  anything.*" — Aldous Huxley
+
+# The link columns in the footer. Keep three or fewer; the grid is sized for it.
+# Browser chrome colour, one <meta name="theme-color"> per colour scheme.
+#
+# This lives outside `metas` on purpose. The metas plugin supports an array of
+# colours for exactly this, but it consumes the array with shift() as it emits
+# the tags, so in a multi-page build only the first page to be processed gets
+# them. Emitting them in base.vto costs two lines and cannot rot.
+theme_colors:
+  - media: "(prefers-color-scheme: light)"
+    color: "#ffffff"
+  - media: "(prefers-color-scheme: dark)"
+    color: "#0a0d10"
+
+footer_columns:
+  - title: Reading
+    links:
+      - text: Archive
+        href: /archive/
+      - text: Atom feed
+        href: /feed.xml
+      - text: JSON feed
+        href: /feed.json
+      - text: Search
+        href: /archive/#search
+  - title: Concepts
+    links:
+      - text: DACE — the method
+        href: https://foreshock.io/concepts/dace.html
+      - text: Aldous — the model
+        href: https://foreshock.io/concepts/aldous.html
+      - text: Splinter — the substrate
+        href: https://foreshock.io/concepts/splinter.html
+      - text: SemSage — the toolkit
+        href: https://foreshock.io/concepts/semsage.html
+  - title: Project
+    links:
+      - text: Governance
+        href: /governance/
+      - text: Glossary
+        href: /glossary/
+      - text: Licensing
+        href: /licensing/
+      - text: foreshock.io
+        href: https://foreshock.io
+      - text: Source on Codeberg
+        href: https://codeberg.org/timthepost/semsage
+
+# Metas plugin https://lume.land/plugins/metas/#description
+metas:
+  site: Foreshock
+  description: >-
+    Working notes on semantic classification from the Foreshock collective:
+    concepts as geometry, auditable scores, and the limits of both.
+  title: "=title"
+  image: /assets/og-image.png
+  twitter: ""
+  fediverse: ""
+  icon: /assets/favicon.svg
+  lang: "=lang"
+  generator: true

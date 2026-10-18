@@ -1,0 +1,40 @@
+{{# The archive / index list of posts.
+    Expects `postslist`. The whole row is a link target (see the
+    `a.post-list__link::after` rule in css/blog.css), so only the title itself
+    carries the visible affordance. #}}
+<ul class="post-list{{ if compact }} post-list--compact{{ /if }}">
+  {{ for post of postslist }}
+    <li>
+      <article class="post-list__entry">
+        <div class="post-list__meta">
+          {{ if post.date }}
+            <span><time datetime="{{ post.dateISO }}">{{ post.dateShort }}</time></span>
+          {{ /if }}
+          {{ if post.readingInfo?.minutes }}
+            <span class="reading">{{ post.readingInfo.minutes }} {{ i18n.post.reading_time }}</span>
+          {{ /if }}
+        </div>
+        <div class="post-list__body">
+          <h2 class="post-list__title">
+            <a href="{{ post.url }}"{{ if post.url == url }} aria-current="page"{{ /if }}>{{ post.title || post.url }}</a>
+          </h2>
+          {{ if post.excerpt }}
+            <div class="post-list__excerpt">{{ post.excerpt |> md(true) }}</div>
+          {{ /if }}
+          {{ if post.tags?.length }}
+            <div class="post-list__tags chips">
+              {{ for tag of post.tags }}
+                {{ set page = search.page(`type=tag tag="${tag}"`) }}
+                {{ if page }}
+                  <a class="chip" href="{{ page.url }}">{{ tag }}</a>
+                {{ else }}
+                  <span class="chip">{{ tag }}</span>
+                {{ /if }}
+              {{ /for }}
+            </div>
+          {{ /if }}
+        </div>
+      </article>
+    </li>
+  {{ /for }}
+</ul>

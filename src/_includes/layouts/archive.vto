@@ -1,0 +1,48 @@
+---
+layout: layouts/base.vto
+---
+
+<header class="container archive-head">
+  <div class="eyebrow"><span class="idx">{{ i18n.nav.archive_index }}</span> {{ i18n.nav.archive_title }}</div>
+  <h1 class="h1">{{ title }}</h1>
+  {{ if subtitle }}
+    <p class="lead">{{ subtitle }}</p>
+  {{ /if }}
+
+  <div class="feed-links">
+    <span>{{ results.length }} {{ i18n.nav.posts_count }}</span>
+    <span class="nav__sep" aria-hidden="true"></span>
+    <span>{{ i18n.nav.feed_label }}</span>
+    <a href="/feed.xml">Atom</a>
+    <a href="/feed.json">JSON</a>
+  </div>
+</header>
+
+<div class="container">
+  {{ if pagination.page === 1 }}
+    <nav class="archive-nav" aria-label="{{ i18n.search.tags }}">
+      <span class="label">{{ i18n.search.tags }}</span>
+      <div class="chips">
+        {{ for tagPage of search.pages("type=tag pagination.page=1", "tag") }}
+          <a class="chip" href="{{ tagPage.url }}"{{ if tagPage.url == url }} aria-current="page"{{ /if }}>{{ tagPage.tag }}</a>
+        {{ /for }}
+      </div>
+    </nav>
+
+    {{ if search.pages("type=author pagination.page=1").length > 1 }}
+      <nav class="archive-nav" aria-label="{{ i18n.search.authors }}">
+        <span class="label">{{ i18n.search.authors }}</span>
+        <div class="chips">
+          {{ for authorPage of search.pages("type=author pagination.page=1", "author") }}
+            <a class="chip" href="{{ authorPage.url }}"{{ if authorPage.url == url }} aria-current="page"{{ /if }}>{{ authorPage.author }}</a>
+          {{ /for }}
+        </div>
+      </nav>
+    {{ /if }}
+
+    <div id="search"></div>
+  {{ /if }}
+
+  {{ include "templates/post-list.vto" { postslist: results } }}
+  {{ include "templates/pagination.vto" }}
+</div>

@@ -1,0 +1,166 @@
+/* ============================================================
+   FORESHOCK — design tokens
+   Instrument panel meets editorial.
+
+   Dark and light are both first-class. Every colour is declared once in a
+   token pair — light is the default block, dark overrides it under
+   [data-theme="dark"] and under prefers-color-scheme when no explicit choice
+   has been made. Nothing in a component may hardcode a colour.
+
+   Accent: signal blue (--accent), plus a cyan trace (--trace) reserved for
+   live signal graphs so a plot never reads as a link.
+   Type: Familjen Grotesk (variable) + IBM Plex Mono, declared in
+   assets/fonts.css.
+   ============================================================ */
+
+:root {
+  /* ---- surfaces (cool near-white, faintly blue) ---- */
+  --bg: #ffffff;
+  --bg-2: #f7f9fa;
+  --surface: #ffffff;
+  --surface-2: #f2f5f7;
+  --surface-3: #e6ecf0;
+
+  /* ---- lines ----
+     Two tiers, deliberately. --border and --border-strong are decorative
+     hairlines: card edges, table rules, separators. They carry no information
+     and must stay quiet, so they are nowhere near 3:1 and are not required to
+     be — WCAG 1.4.11 exempts purely decorative boundaries.
+
+     --border-ui is different: it outlines things a user has to FIND and
+     identify — the theme toggle, the nav burger, ghost buttons. A control
+     whose boundary is invisible is a control nobody finds, so this one clears
+     3:1 against every surface it is painted on (3.67:1 on --surface-3). It
+     exists as its own token precisely so raising it cannot make the decorative
+     hairlines heavy. */
+  --border: rgba(18, 24, 29, 0.11);
+  --border-strong: rgba(18, 24, 29, 0.2);
+  --border-ui: rgba(18, 24, 29, 0.58);
+  --grid: rgba(18, 24, 29, 0.045);
+
+  /* ---- text ----
+     --dim carries every label, hint and secondary caption site-wide, so it
+     clears 4.5:1 against the DARKEST surface it is ever painted on
+     (--surface-3), not just against --bg. --faint is decorative only:
+     rules, separators, placeholder glyphs. Never body text. */
+  --text: #12181d;
+  --muted: #4c5760;
+  --dim: #414c54;
+  --faint: #8d979e;
+
+  /* ---- accent: signal blue ----
+     #0a5f92, NOT the dark-mode #1aa3e8. The bright blue measures 2.82:1 on
+     white — unusable for text, and unusable for a focus ring. */
+  --accent: #0a5f92;
+  --accent-hi: #0d5b87;
+  --accent-deep: #073d5c;
+  --accent-ink: #ffffff;
+  --accent-glow: rgba(10, 95, 146, 0.12);
+  --accent-rgb: 10, 95, 146;
+
+  /* ---- trace: the seismograph signal colour ----
+     Darkened from the dark-mode #19d0e3, which disappears on white. Kept
+     independent of --accent so a live plot never reads as a link. */
+  --trace: #0d7f8e;
+  --trace-glow: rgba(13, 127, 142, 0.18);
+
+  /* ---- status ---- */
+  --ok: #1c6b45;
+  --warn: #8a5a06;
+
+  /* ---- type ---- */
+  --font-display: 'Familjen Grotesk', system-ui, -apple-system, sans-serif;
+  --font-body: 'Familjen Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* ---- geometry ---- */
+  --r-sm: 4px;
+  --r-md: 6px;
+  --r-lg: 10px;
+  --maxw: 1200px;
+  --gutter: clamp(20px, 5vw, 64px);
+
+  /* ---- measure: how wide prose is allowed to get ----
+     Blog bodies want the same 68ch cap the marketing pages use; post headers
+     and lists are allowed to run wider so a list entry is not one word per
+     line. */
+  --measure: 68ch;
+
+  /* ---- motion ---- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --t-fast: 0.16s;
+  --t-med: 0.24s;
+
+  color-scheme: light;
+}
+
+/* ---- dark ----
+   An explicit choice, or a system that asks for it and has not been
+   overridden. The `light` value inside the media query is what honours
+   "follow the system, but let me override": `color-scheme: light` there
+   disables the UA's own dark form-control rendering. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --bg: #0a0d10;
+    --bg-2: #0c1014;
+    --surface: #10151a;
+    --surface-2: #151c22;
+    --surface-3: #1a232a;
+
+    --border: rgba(233, 240, 244, 0.09);
+    --border-strong: rgba(233, 240, 244, 0.17);
+    --border-ui: rgba(233, 240, 244, 0.5);
+    --grid: rgba(233, 240, 244, 0.035);
+
+    --text: #e9eef1;
+    --muted: #a3b0b7;
+    --dim: #8b99a1;
+    --faint: #4c565c;
+
+    --accent: #1aa3e8;
+    --accent-hi: #5abdee;
+    --accent-deep: #0f5f87;
+    --accent-ink: #04121c;
+    --accent-glow: rgba(26, 163, 232, 0.16);
+    --accent-rgb: 26, 163, 232;
+
+    --trace: #19d0e3;
+    --trace-glow: rgba(25, 208, 227, 0.2);
+
+    --ok: #4fca8b;
+    --warn: #e0a548;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0a0d10;
+  --bg-2: #0c1014;
+  --surface: #10151a;
+  --surface-2: #151c22;
+  --surface-3: #1a232a;
+
+  --border: rgba(233, 240, 244, 0.09);
+  --border-strong: rgba(233, 240, 244, 0.17);
+  --border-ui: rgba(233, 240, 244, 0.5);
+  --grid: rgba(233, 240, 244, 0.035);
+
+  --text: #e9eef1;
+  --muted: #a3b0b7;
+  --dim: #8b99a1;
+  --faint: #4c565c;
+
+  --accent: #1aa3e8;
+  --accent-hi: #5abdee;
+  --accent-deep: #0f5f87;
+  --accent-ink: #04121c;
+  --accent-glow: rgba(26, 163, 232, 0.16);
+  --accent-rgb: 26, 163, 232;
+
+  --trace: #19d0e3;
+  --trace-glow: rgba(25, 208, 227, 0.2);
+
+  --ok: #4fca8b;
+  --warn: #e0a548;
+}

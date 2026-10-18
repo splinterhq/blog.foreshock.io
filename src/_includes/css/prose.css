@@ -1,0 +1,499 @@
+/* ============================================================ prose
+   The body of every post and page. Colour is --muted rather than --text
+   because a long read in pure black is fatiguing; --text is reserved for
+   headings, strong and anything that must win against it. */
+
+.prose {
+  max-width: var(--measure);
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+/* Pages that opt out of the measure: reference tables and glossary rows, where
+   a 68ch column wastes the layout rather than improving the reading. */
+.prose--wide {
+  max-width: 100%;
+}
+
+.prose p + p,
+.prose p + ul,
+.prose ul + p,
+.prose p + ol,
+.prose ol + p,
+.prose p + h3,
+.prose h3 + p,
+.prose div + p {
+  margin-top: 1.1em;
+}
+
+.prose strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.prose em {
+  color: var(--text);
+}
+
+.prose h2 {
+  color: var(--text);
+  margin-top: 2.2em;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.prose h3 {
+  color: var(--text);
+  margin-top: 2em;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.18rem;
+  letter-spacing: -0.01em;
+}
+
+.prose h4 {
+  color: var(--text);
+  margin-top: 1.8em;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.02rem;
+}
+
+.prose h2 + p,
+.prose h3 + p,
+.prose h4 + p {
+  margin-top: 0.7em;
+}
+
+.prose a:not(.btn) {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: rgb(var(--accent-rgb) / 0.4);
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--t-fast) var(--ease);
+}
+
+.prose a:not(.btn):hover {
+  text-decoration-color: currentColor;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.3em;
+}
+
+.prose ul {
+  list-style: none;
+}
+
+.prose ul li {
+  position: relative;
+  margin-top: 0.55em;
+}
+
+.prose ul li::before {
+  content: '';
+  position: absolute;
+  left: -1.1em;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.prose ol {
+  list-style: decimal;
+}
+
+.prose ol li {
+  margin-top: 0.55em;
+  padding-left: 0.3em;
+}
+
+.prose ol li::marker {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 0.12em 0.36em;
+  color: var(--text);
+}
+
+.prose a code {
+  color: var(--accent);
+}
+
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin-block: 2.4em;
+}
+
+.prose img {
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--border-strong);
+  padding: 2px 0 2px 20px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.prose blockquote p + p {
+  margin-top: 0.8em;
+}
+
+/* ---- code blocks ----
+   Horizontal scroll on a pre is deliberate and must not leak to the page. */
+pre {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 18px 20px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  line-height: 1.7;
+  color: var(--text);
+  max-width: 100%;
+}
+
+pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+pre .c {
+  color: var(--dim);
+}
+
+pre .k {
+  color: var(--accent);
+}
+
+pre .s {
+  color: var(--ok);
+}
+
+/* A code block with a language caption gets a mono label in its top edge. */
+.code-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 8px;
+}
+
+/* ---- callouts ----
+   ::: blocks in markdown, emitted by callouts.ts. A hand-written
+   <div class="callout"> in a template gets the same box; only the accent edge
+   changes with the severity. */
+.callout {
+  border: 1px solid var(--border-strong);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--r-md);
+  background: var(--surface-2);
+  /* More room vertically than horizontally (~0.5em above and below what this
+     used to be): the label sits at the top and the last line is usually short,
+     so the box reads scrunched against the text even though the sides are
+     generous. The inline padding is unchanged. */
+  padding: 30px 24px;
+}
+
+.callout > :first-child {
+  margin-top: 0;
+}
+
+.callout > :last-child {
+  margin-bottom: 0;
+}
+
+.callout .label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.callout p {
+  color: var(--muted);
+}
+
+.callout strong {
+  color: var(--text);
+}
+
+/* Severity lives in the 3px edge and the label colour, nowhere else: a callout
+   that recolours its whole background stops reading as a quotation from the
+   design. */
+.callout--warn,
+.callout--danger {
+  border-left-color: var(--warn);
+}
+
+.callout--success,
+.callout--tip {
+  border-left-color: var(--ok);
+}
+
+.callout--warn .label,
+.callout--danger .label {
+  color: var(--warn);
+}
+
+.callout--success .label,
+.callout--tip .label {
+  color: var(--ok);
+}
+
+/* ---- tables ---- */
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  margin-block: 24px;
+}
+
+/* A table written as plain markdown has no .table-wrap around it, so it gets
+   the same hairline box here rather than looking like an unfinished document. */
+.prose > table {
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+}
+
+/* Below this width a table cannot keep its min-width without pushing the page
+   sideways. body has overflow-x: hidden, so without this the right-hand column
+   is simply cut off. */
+@media (max-width: 720px) {
+  .prose > table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  min-width: 560px;
+}
+
+thead th {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-strong);
+  background: var(--surface-2);
+  white-space: nowrap;
+}
+
+tbody td {
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  vertical-align: top;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+tbody td:first-child {
+  color: var(--text);
+  font-weight: 500;
+}
+
+tbody tr:hover td {
+  background: var(--surface-2);
+}
+
+td .mono,
+th .mono {
+  font-size: 0.84rem;
+}
+
+/* ---- equation block ---- */
+.eqn {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 24px 22px 18px;
+  overflow-x: auto;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 2;
+}
+
+.eqn__cap {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--dim);
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+/* ---- code / ascii figures ---- */
+.fig {
+  margin-block: 26px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface-2);
+  padding: clamp(20px, 3vw, 30px);
+}
+
+.fig figcaption {
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--dim);
+  text-align: center;
+}
+
+.fig pre {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* ---- footnotes ----
+   Rendered by the footnotes markdown plugin, which emits .footnotes. */
+.footnotes {
+  margin-top: 52px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+  font-size: 0.92rem;
+  color: var(--muted);
+  max-width: var(--measure);
+}
+
+.footnotes::before {
+  content: 'Notes';
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 14px;
+}
+
+.footnotes dl {
+  margin: 0;
+}
+
+.footnotes .footnote {
+  display: grid;
+  grid-template-columns: 2.2em minmax(0, 1fr);
+  gap: 0 8px;
+  padding-block: 7px;
+  border-bottom: 1px solid var(--border);
+}
+
+.footnotes .footnote:last-child {
+  border-bottom: 0;
+}
+
+.footnotes dt {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--accent);
+}
+
+.footnotes dd {
+  margin: 0;
+}
+
+.footnotes a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.footnotes a:hover {
+  text-decoration: underline;
+}
+
+/* ---- Prism tokens ----
+   Only the classes the site's own fences actually emit are themed, so the
+   markup stays short. Comments and punctuation are dimmed; keywords, strings
+   and numbers carry the accent, green and amber the way the shell snippets
+   on the main site do. */
+code[class*='language-'],
+pre[class*='language-'] {
+  font-family: var(--font-mono);
+  tab-size: 2;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: var(--dim);
+  font-style: italic;
+}
+
+.token.punctuation {
+  color: var(--muted);
+}
+
+.token.keyword,
+.token.selector,
+.token.important,
+.token.atrule {
+  color: var(--accent);
+}
+
+.token.string,
+.token.attr-value,
+.token.char,
+.token.regex {
+  color: var(--ok);
+}
+
+.token.number,
+.token.boolean,
+.token.constant,
+.token.symbol {
+  color: var(--warn);
+}
+
+.token.function,
+.token.class-name {
+  color: var(--text);
+}
+
+.token.tag,
+.token.deleted {
+  color: var(--muted);
+}
+
+.token.inserted,
+.token.important {
+  color: var(--ok);
+}

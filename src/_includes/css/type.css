@@ -1,0 +1,129 @@
+/* ============================================================ type */
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-size: clamp(2.5rem, 6.6vw, 5.2rem);
+  text-wrap: balance;
+}
+
+.h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2rem, 4.4vw, 3.3rem);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.65rem, 3.2vw, 2.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+}
+
+.h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  line-height: 1.3;
+}
+
+.lead {
+  font-size: clamp(1.04rem, 1.5vw, 1.25rem);
+  color: var(--muted);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.prose-muted {
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.dim {
+  color: var(--dim);
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-ligatures: none;
+}
+
+/* ---- labels & eyebrows ----
+   The eyebrow is the recurring section marker: a 22px accent rule, an index
+   numeral, then the label. */
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.label--accent {
+  color: var(--accent);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 18px;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  flex: none;
+}
+
+.eyebrow .idx {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* An eyebrow is sometimes the section's only heading, so it must be able to BE
+   the heading. `* { margin: 0 }` already zeroes the h2 box, but the default
+   line-height and font-size would otherwise shift it out of line. */
+h2.eyebrow {
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: 500;
+}
+
+/* The accent glyph that stands in for "//" in terminal-style labels. */
+.meta-cue {
+  color: var(--accent);
+}

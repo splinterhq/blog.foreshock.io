@@ -1,0 +1,42 @@
+nav:
+  toc: Table of contents
+  on_this_page: On this page
+  post_nav: Post navigation
+  next_post: Newer →
+  previous_post: ← Older
+  all_posts: All posts in the archive
+  archive_title: Archive
+  archive_index: All
+  archive_subtitle: >-
+    Every post, newest first. Filter by tag, or search the full text of the
+    archive.
+  back_to_archive: ← Back to the archive
+  posts_count: posts
+  feed_label: "Feed"
+  page: Page
+  of: of
+  next: Next →
+  previous: ← Previous
+  previous_page: Newer posts
+  next_page: Older posts
+post:
+  by: by
+  reading_time: min read
+  eyebrow: Field note
+  untagged: Unfiled
+page:
+  eyebrow: Reference
+search:
+  by_tag: Posts tagged
+  by_author: Posts by
+  tags: Tags
+  authors: Authors
+comments:
+  title: Comments
+  description: |
+    You can leave a comment by replying to <a href=":src:">this Mastodon post</a> from your own account on Mastodon or any other ActivityPub-capable social network that can exchange replies with Mastodon.
+  description_bluesky: |
+    You can leave a comment by replying to <a href=":bluesky:">this Bluesky post</a> from your own account.
+  description_all: |
+    You can leave a comment by replying to <a href=":src:">this Mastodon post</a> or <a href=":bluesky:">this Bluesky post</a> from your own account.
+  empty: No comments yet

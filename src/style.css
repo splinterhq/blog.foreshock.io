@@ -1,0 +1,20 @@
+/* Foreshock — stylesheet entry.
+ *
+ * Lightning CSS inlines these in this order into a single /style.css, so the
+ * cascade order here IS the cascade order on the page: tokens first, then
+ * reset, then structure, then components, then the blog-only surfaces.
+ *
+ * The @font-face declarations are NOT here. They live in assets/fonts.css,
+ * which is loaded separately so its relative URLs resolve against the
+ * directory the woff2 files are actually served from. */
+
+@import "css/variables.css";
+@import "css/reset.css";
+@import "css/layout.css";
+@import "css/type.css";
+@import "css/prose.css";
+@import "css/components.css";
+@import "css/nav.css";
+@import "css/footer.css";
+@import "css/blog.css";
+@import "css/motion.css";

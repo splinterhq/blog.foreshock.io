@@ -1,0 +1,21 @@
+---
+layout: layouts/base.vto
+---
+
+<header class="container archive-head">
+  <div class="eyebrow">
+    <span
+      class="idx">{{ if type == "author" }}{{ i18n.search.authors }}{{ else }}{{ i18n.search.tags }}{{ /if }}</span>
+    <a class="btn--link" href="/archive/">{{ i18n.nav.back_to_archive }}</a>
+  </div>
+  <h1
+    class="h1">{{ if type == "author" }}{{ i18n.search.by_author }} “{{ author }}”{{ else }}{{ i18n.search.by_tag }} “{{ tag }}”{{ /if }}</h1>
+  <div class="feed-links">
+    <span>{{ results.length }} {{ i18n.nav.posts_count }}</span>
+  </div>
+</header>
+
+<div class="container">
+  {{ include "templates/post-list.vto" { postslist: results } }}
+  {{ include "templates/pagination.vto" }}
+</div>

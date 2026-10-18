@@ -1,0 +1,189 @@
+/* ============================================================ layout */
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  position: relative;
+  z-index: 1;
+}
+
+.section {
+  padding-block: clamp(72px, 11vw, 80px);
+  position: relative;
+}
+
+.section a {
+  text-decoration: underline;
+}
+
+.section a:hover {
+  text-decoration: none;
+}
+
+.section--tight {
+  padding-block: clamp(48px, 7vw, 40px);
+}
+
+.section--tight a {
+  text-decoration: underline;
+}
+
+.section--tight a:hover {
+  text-decoration: none;
+}
+
+.section--tight ul {
+  font-family: var(--font-display);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  border: 0;
+}
+
+/* ---- page hero: the standard top-of-page block for a post or a page ---- */
+.phero {
+  padding-top: clamp(48px, 7vw, 92px);
+  padding-bottom: clamp(30px, 4vw, 52px);
+}
+
+.phero h1 {
+  max-width: 22ch;
+}
+
+.phero .lead {
+  max-width: 62ch;
+  margin-top: 20px;
+}
+
+/* ---- section heads ---- */
+.section-head {
+  max-width: 64ch;
+  margin-bottom: clamp(30px, 4vw, 52px);
+}
+
+.section-head p {
+  margin-top: 16px;
+}
+
+/* ---- docs layout: a sticky rail beside a long body ----
+   Used by the glossary and by any long-form page with its own table of
+   contents. */
+.mlayout {
+  display: grid;
+  grid-template-columns: 216px minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 60px);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .mlayout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .mnav {
+    position: static !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--border);
+    padding: 0 0 16px !important;
+    margin-bottom: 8px;
+  }
+
+  .mnav .label {
+    margin-bottom: 10px;
+  }
+
+  .mnav a {
+    display: inline-block;
+    padding: 5px 10px 5px 0 !important;
+    margin-right: 6px;
+    border-left: 0 !important;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mnav a.is-active {
+    border-left: 0 !important;
+    border-bottom-color: var(--accent) !important;
+  }
+}
+
+.mnav {
+  position: sticky;
+  top: 88px;
+  border-right: 1px solid var(--border);
+  padding-right: 22px;
+}
+
+.mnav .label {
+  display: block;
+  margin-bottom: 14px;
+}
+
+.mnav a {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--dim);
+  padding: 6px 12px;
+  border-left: 2px solid transparent;
+  transition: color var(--t-fast) var(--ease), border-color var(--t-fast)
+    var(--ease);
+}
+
+.mnav a:hover {
+  color: var(--text);
+}
+
+.mnav a.is-active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+}
+
+.mbody {
+  min-width: 0;
+}
+
+.msec + .msec {
+  margin-top: 52px;
+  padding-top: 52px;
+  border-top: 1px solid var(--border);
+}
+
+.msec > h2 {
+  margin-bottom: 18px;
+}
+
+/* ============================================================ utilities */
+
+.stack-v {
+  display: grid;
+  gap: var(--stack, 16px);
+}
+
+.center {
+  text-align: center;
+}
+
+.hairline-top {
+  border-top: 1px solid var(--border);
+  padding-top: 28px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.flow > * + * {
+  margin-top: 1.1em;
+}

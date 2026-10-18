@@ -1,0 +1,97 @@
+---
+layout: layouts/base.vto
+---
+
+<header class="container post-head">
+  {{# The eyebrow is the recurring section marker on this design. A post
+      without a hand-written one borrows its tags: the first tag becomes the
+      index numeral, the rest become the label. A post with no tags at all
+      still gets the marker, because an unmarked hero reads as a mistake. #}}
+  {{ if eyebrow }}
+    <div class="eyebrow"><span class="idx">{{ i18n.post.eyebrow }}</span> {{ eyebrow }}</div>
+  {{ else if tags?.length }}
+    <div class="eyebrow"><span class="idx">{{ tags[0] }}</span>{{ if tags.length > 1 }} {{ tags.slice(1).join(" · ") }}{{ /if }}</div>
+  {{ else }}
+    <div class="eyebrow"><span class="idx">{{ i18n.post.eyebrow }}</span> {{ i18n.post.untagged }}</div>
+  {{ /if }}
+  <h1 class="h1">{{ title }}</h1>
+  {{ if subtitle }}
+    <p class="standfirst">{{ subtitle }}</p>
+  {{ /if }}
+  {{ include "templates/post-details.vto" }}
+</header>
+
+<div class="container">
+  <div class="mlayout{{ if !toc?.length }} mlayout--no-toc{{ /if }}">
+    {{ if toc?.length }}
+      <nav class="mnav" data-scrollspy aria-label="{{ i18n.nav.on_this_page }}">
+        <span class="label">{{ i18n.nav.on_this_page }}</span>
+        {{ include "templates/toc.vto" { items: toc } }}
+      </nav>
+    {{ /if }}
+
+    <div class="mbody">
+      <article class="post" data-pagefind-body data-title="{{ title }}" data-pagefind-index-attrs="data-title">
+        <div class="prose">
+{{ content }}
+        </div>
+
+        {{ if footnotes?.length }}
+          <aside role="note" class="footnotes">
+            <dl>
+              {{ for note of footnotes }}
+                <div id="{{ note.id }}" class="footnote">
+                  <dt><a href="#{{ note.refId }}">{{ note.label }}</a></dt>
+                  <dd>{{ note.content }}</dd>
+                </div>
+              {{ /for }}
+            </dl>
+          </aside>
+        {{ /if }}
+
+        {{ if comments?.src || comments?.bluesky }}
+          <aside class="comments">
+            <header class="comments__header">
+              <h2>{{ i18n.comments.title }}</h2>
+              {{ if comments.src && comments.bluesky }}
+                <p>{{ i18n.comments.description_all.replace(":src:", comments.src).replace(":bluesky:", comments.bluesky) }}</p>
+              {{ else if comments.src }}
+                <p>{{ i18n.comments.description.replace(":src:", comments.src) }}</p>
+              {{ else }}
+                <p>{{ i18n.comments.description_bluesky.replace(":bluesky:", comments.bluesky) }}</p>
+              {{ /if }}
+            </header>
+            <mastodon-comments bluesky="{{ comments.bluesky }}" mastodon="{{ comments.src }}" cache="{{ comments.cache ?? 60 }}" class="comments__embed">
+              {{ i18n.comments.empty }}
+            </mastodon-comments>
+          </aside>
+        {{ /if }}
+      </article>
+
+      {{ set previousPost = search.previousPage(url, "type=post") }}
+      {{ set nextPost = search.nextPage(url, "type=post") }}
+      {{ if previousPost || nextPost }}
+      <nav class="post-nav" aria-label="{{ i18n.nav.post_nav }}">
+        <ul class="post-nav__list">
+          {{ if previousPost }}
+            <li class="post-nav__item">
+              <a class="post-nav__link" href="{{ previousPost.url }}" rel="prev">
+                <span class="pagination__label">{{ i18n.nav.previous_post }}</span>
+                <span class="pagination__title">{{ previousPost.title }}</span>
+              </a>
+            </li>
+          {{ /if }}
+          {{ if nextPost }}
+            <li class="post-nav__item post-nav__item--next">
+              <a class="post-nav__link" href="{{ nextPost.url }}" rel="next">
+                <span class="pagination__label">{{ i18n.nav.next_post }}</span>
+                <span class="pagination__title">{{ nextPost.title }}</span>
+              </a>
+            </li>
+          {{ /if }}
+        </ul>
+      </nav>
+      {{ /if }}
+    </div>
+  </div>
+</div>

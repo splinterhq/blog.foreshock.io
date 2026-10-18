@@ -1,0 +1,22 @@
+---
+layout: layouts/base.vto
+---
+
+<header class="container phero">
+  {{ if eyebrow }}
+    <div class="eyebrow"><span class="idx">{{ i18n.page.eyebrow }}</span> {{ eyebrow }}</div>
+  {{ /if }}
+  <h1 class="h1">{{ title }}</h1>
+  {{ if subtitle }}
+    <p class="lead">{{ subtitle }}</p>
+  {{ /if }}
+</header>
+
+<div class="container section--tight">
+  {{# `wide: true` in the front matter opts a page out of the 68ch reading
+      measure. The glossary and the tables need the full column; an essay does
+      not. #}}
+  <div class="prose{{ if wide }} prose--wide{{ /if }}" data-pagefind-body>
+{{ content }}
+  </div>
+</div>

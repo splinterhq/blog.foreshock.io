@@ -1,0 +1,45 @@
+/* ============================================================
+   motion
+   One block, at the end, so it wins on specificity ties. Everything that
+   animates in CSS is listed here; JS reads the same media query before it
+   starts any animation of its own.
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ============================================================ print */
+
+@media print {
+  body::before,
+  .nav,
+  .footer,
+  .mnav,
+  .post-nav,
+  .pagination,
+  #search,
+  .comments {
+    display: none;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+}
