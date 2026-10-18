@@ -273,7 +273,7 @@ coefficient, because math is standing at the table and getting ready to sit down
 ## Remember vision, and *that Converse ad?*
 
 We don't yet have enough unencumbered photograps paired to keys to fully bloom the 
-_depth_ of image matching (magnitude), but affectie recognition in images is zero-shot based
+_depth_ of image matching (magnitude), but affective recognition in images is zero-shot based
 completely on the text vector space from the [existing centroid populations](https://codeberg.org/timthepost/semsage/src/branch/main/train/Aldous_2-0#L1250). 
 
 In other words, we've got plenty of breadth to make it useful already, we just lack
