@@ -46,8 +46,6 @@ footer_columns:
         href: /feed.json
       - text: Search
         href: /archive/#search
-      - text: Foreshock Mastodon
-        href: https://mastodon.social/@foreshock
       - text: Tim Post (Blue Sky)
         href: https://bsky.app/profile/timthepost.bsky.social
   - title: Concepts
@@ -72,6 +70,8 @@ footer_columns:
         href: /licensing/
       - text: Source on Codeberg
         href: https://codeberg.org/timthepost/semsage
+      - text: Mastodon
+        href: https://mastodon.social/@foreshock
 
 # Metas plugin https://lume.land/plugins/metas/#description
 metas:
