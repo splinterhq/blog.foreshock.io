@@ -99,10 +99,7 @@ approximation instead of a hidden one. That is a good trade for this problem. It
 would be a bad trade for one that needed correlated-dimension sensitivity, and
 it is worth knowing which problem you have before you point a model at it.
 
----
-
-_Footnotes below are load-bearing: the ε and the floor are not the same number,
-and neither of them is zero._[^floor]
+_NB: The ε and the [^floor] are not the same number, and neither of them is zero._
 
 [^floor]: The floor is applied as `σ² + FLOOR` on every dimension, so a
     zero-variance dimension contributes weight `1/FLOOR` rather than an
