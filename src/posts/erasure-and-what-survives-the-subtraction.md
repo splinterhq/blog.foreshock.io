@@ -190,6 +190,17 @@ Think of it like a lawn with a big rock in the middle. You remove the rock. Now 
 have a lawn with a giant bald spot. The tool refuses any further alteration completely 
 and reports only the big bald spot with much less grass.
 
+However, and this is ***critically-important***, the model has absolutely no comprehension
+of rocks, grass, or bald spots; it only knows the vectors carrying those labels share
+a close similiarity from their center projections, and the diagonal view allows a peek at
+how closely they match in tangible substance.
+
+**That's why it's 100% privacy-respecting: it understands nothing more about what it analyzes
+than my cheap solar-powered calculator I use at the grocery store could understand about my A1C.**
+
+As Aldous is not a generative model (it is a discriminative metric model), there's never any
+comprehension.
+
 ## Examples In History: "Strange Fruit"
 
 How does our modern language treat historical concepts that are linked to very dynamic 
@@ -362,8 +373,5 @@ The paper's text bibliography, as well as raw markdown source are in the same re
 ---
 
 *Written by-hand by Tim Post, Principal engineer and investigator working on this; creator of Aldous.*
-
-
-
 
 
