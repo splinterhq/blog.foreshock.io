@@ -353,8 +353,8 @@ There's a limit to how _accurately_ I am able to [craft these groups](/posts/wha
 measure and I'd like to call on anyone else who can to help.
 
 I need people deep in historical studies to help this go further, all the way back
-to biblical scholars. I've got a few Math post-docs and advanced folks helping 
-me with the technical side - I need to bring people interested in working on the
+to biblical scholars. I've got a few Math postdocs and other advanced folks helping 
+me with the technical side; I need to bring people interested in working on the
 human side to the table with the rigor this phase of the work needs.
 
 I'm `tim@foreshock.io` if you want to collaborate. The answer to "Can Aldous identify
