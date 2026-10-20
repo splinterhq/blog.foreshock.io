@@ -231,8 +231,9 @@ so famously covered in 1939.
 Critical for our purposes but not nearly as important as the issue of credit is also that it 
 places the text squarely within the grasp of open science under current US copyright law.
 
-This legal necessity has placed ***extreme*** onerous drag on the project, and we're glad
-to finally have falsifiable conclusions by being able to include this exact work unencumbered.
+This legal necessity has placed ***extreme*** onerous drag on the project, and we're glad to 
+finally publish our falsifiable conclusions partly by being able to include this exact work 
+unencumbered.
 
 We never _train on_ lyrics, we _analyze them_. But, we're also a novel mathematical world model,
 and no AI understands this is reaction to a performance, not the ingestion and distribution of
