@@ -229,7 +229,19 @@ renamed it to "Strange Fruit" when he put it to _music_, which [Billie Holiday](
 so famously covered in 1939.
 
 Critical for our purposes but not nearly as important as the issue of credit is also that it 
-places the text squarely within the grasp of open science under current US copyright law. 
+places the text squarely within the grasp of open science under current US copyright law.
+
+This legal necessity has placed ***extreme*** onerous drag on the project, and we're glad
+to finally have falsifiable conclusions by being able to include this exact work unencumbered.
+
+We never _train on_ lyrics, we _analyze them_. But, we're also a novel mathematical world model,
+and no AI understands this is reaction to a performance, not the ingestion and distribution of
+art.
+
+We would surely win any copyright litigation, but the legal cost would severaly set us back. 
+Unfortunately, with AI, the process is usually initiated without a lot of human oversight 
+with the assumption that false-positives can be disqualified early. That's how projects like
+this get shut down, so we have to be extra-armored in approach.
 :::
 
 In other words, getting back to where we were: approximately what else does racism _mean_ to us 
