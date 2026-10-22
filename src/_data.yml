@@ -16,7 +16,7 @@ menu_links: []
 # The footer note under the logo
 footer_note: >-
   Read the room, never the message. Geometry, not a black box. Prose is CC-0;
-  code is Apache-2.0.
+  code is Apache-2.0. Powered by <a style="display:inline" href="https://lume.land">Lume</a> and <a style="display:inline" href="https://lume.land/theme/simple-blog/">Simple Blog</a>
 
 footer_quote: >-
   "*Words can be like X-rays if you use them properly — they'll go through
