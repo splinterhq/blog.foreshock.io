@@ -74,21 +74,29 @@ Grotesk and IBM Plex Mono rather than loading them from a CDN.
 
 ## GPL3 Compatibility 
 
-Because Aldous' only external component dependency that isn't directly owned by
-its author (who is the author of Aldous) is Nomic Text / Vision 1.5, and because 
-100% of the training corpus and weights of Nomic Text & Nomic Vision are released 
-under Apache 2, the entire stack is technically eligible for potential forking, 
-where the FSF can assume the copyright of the fork, including all dependencies.
+Because Aldous' only external component dependency that isn't also directly owned by
+Aldous' author is Nomic Text / Vision 1.5, and because 100% of the training corpus 
+and weights of Nomic Text & Nomic Vision are released under Apache 2, the entire stack 
+is technically eligible for potential forking, where the FSF can assume the copyright 
+of the fork, including all dependencies.
 
-Nomic can be reproduced freely from source with what they include. 
+Nomic can be reproduced freely from source with what they include, but they'd probably
+need to run a donation drive to get the GPU time to do it (the whole model from scratch
+would be a couple thousand bucks to train from scratch, at least, even that small).
 
 The author is willing to coordinate this if someone reaches out, but I'm not going
 to be the one that approaches the FSF or RMS about it. I'm `tim@foreshock.io` or 
 `timthepost@protonmail.com`, whichever is preferred. The tools aren't really something
-I go around suggesting but something people figure out they need on their own.
+I go around suggesting but something people figure out they need on their own. 
+
+The author was a member before cancelling all professional memberships as a matter of
+diligence. The author prefers to build instead of donate to those that do.
 
 In any event, a GPL fork is desired because it enables a much wider enablement to the
 science on ordinary consumer-grade hardware (an i3 or better runs it all comfortably).
+
+This can help people learn to be curious about ML through their own language and world,
+without any creepy ulterior motives at play. Wouldn't that be nice?
 
 ## Contributing phrases
 
