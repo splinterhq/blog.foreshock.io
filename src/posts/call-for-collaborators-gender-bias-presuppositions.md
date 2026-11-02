@@ -20,9 +20,9 @@ Aldous 2 currently scopes other concepts that have demonstrated to be very probl
 
 This is a call to help broaden the exploratory nature of researching this phenomenon ethically and professionally, while also more formally inviting additional communities already currently concerned with precisely this kind impact on their daily lives and at work under the machine learning safety research big-top tent to collaborate.
 
-For context, here is [Aldous 2's current academic paper](https://codeberg.org/timthepost/semsage/src/branch/main/docs/Aldous_2-0.pdf), which evolves as the model is iteratively released, and is the base system we use for analysis along with [SemSage](https://codeberg.org/timthepost/semsage) as a graphical harness to interact and instrument with it. ***Aldous does not use LLMs for any part of the analysis and is a purely metric world model.***
-
 <!--more-->
+
+For context, here is [Aldous 2's current academic paper](https://codeberg.org/timthepost/semsage/src/branch/main/docs/Aldous_2-0.pdf), which evolves as the model is iteratively released, and is the base system we use for analysis along with [SemSage](https://codeberg.org/timthepost/semsage) as a graphical harness to interact and instrument with it. ***Aldous does not use LLMs for any part of the analysis and is a purely metric world model.***
 
 ## What are Our Goals?
 
