@@ -34,11 +34,15 @@ Because each one of those things explores a very different intersecting and over
 
 The 13-pounder cannonball of the "sexism" sensor is aimed for three varying severities of how it presents and also escalates, along with impact by collective implication, so we turn it into like the "blue jay" of the Angry Birds and make it three smaller ones: 
 
+<br />
+
 | Sensor   | Pop |  Measures                                        | Link         |
 |----------|-----|--------------------------------------------------|--------------|
 | sexism   |  5  |  Basic Structural Presuppositions                | [r-click](https://codeberg.org/timthepost/semsage/src/branch/main/train/Aldous_2-0#L431) |
 | +sexism  |  5  |  Institutional Structural Presuppositions        | [r-click](https://codeberg.org/timthepost/semsage/src/branch/main/train/Aldous_2-0#L439) |
 | ++sexism |  3  |  Collective / Third-Person Expressions Of Both   | [r-click](https://codeberg.org/timthepost/semsage/src/branch/main/train/Aldous_2-0#L447) |
+
+<br />
 
 Breaking the cannonball isn't just for clarity; each smaller sensor collapses independently. If 'sexism' collapses but '+career_directness' survives, we've found where the bias needs to be further investigated by other fields.
 
