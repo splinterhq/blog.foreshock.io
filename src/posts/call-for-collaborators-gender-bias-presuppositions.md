@@ -194,6 +194,8 @@ Counter-direct Population (~5 phrases):
   "restore power and test"
 ```
 
+<br />
+
 ***These five won't work the way that they are*** because centroid phrase population members need to be complete sentences in the language that they're written in. The sentences should be _laconic_ (as to the point as possible, no unnecessary fluff) and written with a "middle school" reading level in mind. In order to work, the embedder needs to evaluate them with the strongest directionality its corpus can provide, so we have to be a _little_ picky.
 
 ## Why bother? Great question!
