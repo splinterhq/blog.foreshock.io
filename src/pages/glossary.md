@@ -9,7 +9,20 @@ menu:
   order: 3
 ---
 
-Terms are grouped roughly in the order you'd meet them, from the substrate up.
+## A Visual Infographic Introduction:
+
+This is AI-generated, but it is much better than Aldous' author could do with 
+crayons, we assure you!. No skill loss occurred as the result of this infographic.
+
+It shows how cosine similiarity can rapidly group concepts, and how Standardized 
+Euclidean distance differentiates them by nuance. It also illustrates how semantic 
+space has "neighborhoods" that sometimes intersect and have roads between them.
+
+![Geometry Infographic](/assets/semantic_geometry.jpeg)
+
+## Text Glossary Of Terms:
+
+The following erms are grouped roughly in the order you'd meet them, from the substrate up.
 
 ## Substrate — Splinter
 
