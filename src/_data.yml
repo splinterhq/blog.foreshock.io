@@ -60,8 +60,10 @@ footer_columns:
         href: https://foreshock.io/concepts/semsage.html
   - title: Project
     links:
-      - text: Main Collective Website
+      - text: Main Website
         href: https://foreshock.io
+      - text: Support Us Financially
+        href: https://buymeacoffee.com/timthepost
       - text: Governance
         href: /governance/
       - text: Glossary
