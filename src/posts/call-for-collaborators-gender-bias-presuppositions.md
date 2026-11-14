@@ -253,7 +253,12 @@ If you're interested, please contact ***tim@foreshock.io*** or ***timthepost@pro
 
 Credit will of course be given _in the model_ as well as in Aldous' academic paper and website. You'll also have the thanks of many researchers that need a better way to instrument this that doesn't rely so much on quantifying intuition.
 
-The "Red Team" is made up entirely of professional volunteers from [a Dirty Dozen](https://www.linkedin.com/company/a-dirty-dozen/posts/?feedView=all) who believe in the research and would like opportunities for cross-field professional credit on something that directly benefit's the public's interests. Disclaimer: I am a founding adjunct advisor of the organization wing, but not a direct participitant in or beneficiary of any of its business operations; this is also not a paid collaboration.
+The "Red Team" is made up entirely of volunteers that I will be leading myself. It will be comprised of two distinct classes:
+
+ - Those who use LLMs avidly for coaching and just notice it in everyday output (a drop-box tool with forensic metadata stamping)
+ - Those who use research conversational harnesses to specifically elicit conversational trajectories. This is no different than exploring "usual" model safety; it's just that our prompts will seek life advice in differently-crafted ways!
+ 
+We will be working entirely in conjunction with the companies themselves, and I will represent the group as someone widely-recognized in the field of inclusive research and "big community" applications.
 
 Phrases that you contribute will be used to Train Aldous 2.0, a Metric DACE (Diagonal Affective Covariance Estimation) model
 on precise classification and used to project the vectors your phrases illustrate orthogonally onto specimen responses being examined for collapse. 
