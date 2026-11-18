@@ -1,9 +1,9 @@
 ---
-title: Why receipts matter than scores when choosing a safety model
+title: Why receipts matter more than scores when choosing a safety model
 subtitle: A number you cannot recompute is an assertion wearing a decimal point. Here is what it takes to make every reading re-derivable.
 author: Tim Post
 date: 2026-06-18
-draft: true
+draft: false
 tags:
   - Testing
   - Governance
@@ -76,6 +76,8 @@ threshold at once.
 | Threshold provenance    | Unknown                | A test name                     |
 | Failure mode            | Silent                 | Named, and pinned               |
 | Disagreement resolution | Argues from the number | Argues from the arithmetic      |
+
+<br />
 
 ::: tip
 The practical test: hand the model file and the score to someone who has

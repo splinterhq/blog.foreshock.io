@@ -1,0 +1,88 @@
+=====================================================================
+1. A diagonal is a matrix promise you can more confidently keep
+   https://blog.foreshock.io/posts/a-diagonal-is-a-promise-you-can-keep/
+=====================================================================
+
+Storing a full covariance matrix for a 768-dimensional embedding, across dozens of concepts, quickly becomes hundreds of millions of floats that most requests never read. In this post I walk through why Aldous uses the diagonal (Mahalanobis) approximation of that matrix: scoring a document against a concept reduces to a centroid lookup and a weighted distance, with constant time per concept and no inference at request time.
+
+The trade-off is stated rather than hidden. Dropping off-diagonal terms assumes dimensions are conditionally independent given the concept, which is not strictly true for sentence embeddings. The large-scale behaviour survives, the approximation is testable, and the arithmetic can be checked by hand. The post also covers the variance floor that prevents a single dimension from dominating the score, and why a similarity elbow should be treated as a relevance filter rather than a ranking.
+
+Takeaway: good engineering is often about choosing the right approximation and being explicit about what it costs.
+
+#MachineLearning #Embeddings #SoftwareEngineering #AppliedMath
+
+
+=====================================================================
+2. CFC/CFP: Deconstructing Gender Bias Presuppositions Via Multivariate Gaussian Topologies
+   https://blog.foreshock.io/posts/call-for-collaborators-gender-bias-presuppositions/
+=====================================================================
+
+This post is an open call for collaborators and papers on a research direction within the Aldous 2 project: using a metric, non-generative approach to isolate how gendered assumptions surface in language model output. Rather than asking whether a response is biased in general, the method breaks each concept into small, independently measurable sensors (for example, distinct tiers of safety advisory language or career-path framing) so that each can be examined on its own and then studied in combination.
+
+The post is explicit about method and limits. Aldous does not use an LLM for analysis, phrase populations must meet clear evaluation criteria, and the work is being built to be validated in the open. It invites three groups: people with subject-matter expertise to help curate concepts, people with technical skills to use a local, offline tool for evaluating phrase sets, and researchers working on related techniques who want to publish or co-author. Contributions are CC-0 and Apache 2.0 licensed, and the project commits to running all tooling locally with no network access.
+
+Takeaway: if you work in ML safety, trust and safety, or the social sciences and want to shape how bias is measured rather than just debated, this is an open door.
+
+#MLSafety #TrustAndSafety #ResponsibleAI #OpenResearch #Collaboration
+
+
+=====================================================================
+3. Concept Erasure: what survives, and what it's already suggesting about ourselves
+   https://blog.foreshock.io/posts/erasure-and-what-survives-the-subtraction/
+=====================================================================
+
+Latent concept erasure is a measurement technique: remove a concept's direction from a document's vector, rescale, and re-score everything else. What changes, and what does not, reveals which concepts were independent and which were projections of one another. In one example, removing a violence motif also dropped a closely related threat score, showing the two were tightly coupled in that text.
+
+The post is candid about errors. An arithmetic slip in an early version (projecting with an un-normalised subtraction before rescaling) introduced a corpus-drag figure that was later found and corrected, and both numbers are published. It also explains the constraint that erasure should be run one concept at a time, since chained erasure produces vectors that no longer correspond to real text. The work is discriminative, not generative, which means the system measures similarity without any comprehension of content.
+
+The post also discusses a sensitive historical example, flagged with a content warning, and calls for interdisciplinary collaboration with historians, social scientists, and others to extend the validation work.
+
+Takeaway: falsifiable, reproducible measurement can turn vague claims about language into testable questions, and publishing the errors is part of doing that well.
+
+#AIResearch #Interpretability #Embeddings #AIGovernance #OpenScience
+
+
+=====================================================================
+4. Why receipts matter more than scores when choosing a safety model
+   https://blog.foreshock.io/posts/receipts-not-scores/
+=====================================================================
+
+A classifier score is only as useful as your ability to reproduce it. This post argues for keeping a "receipt" for every result: the inputs, constants, and thresholds that generated the number, stored well enough that someone who has never read the code can recompute it and reach the same answer. A number you cannot recompute is an assertion, not a measurement.
+
+The post outlines three properties that make this possible. Thresholds are constants in tests rather than runtime configuration. Every key names its own semantics. Failure modes, especially fail-open cases where a check runs, misses, and the operation proceeds anyway, are enumerated before they happen. It also describes a tolerance process that refuses to widen acceptance bands when a check has failed, so regressions remain visible instead of being absorbed into the thresholds.
+
+Takeaway: none of this makes a model more accurate, but it makes its errors legible, which matters for anything a person will be asked to defend.
+
+#MLOps #AIGovernance #Testing #Reproducibility #SoftwareQuality
+
+
+=====================================================================
+5. Centroid concepts: what's the cost from cradle to deployment?
+   https://blog.foreshock.io/posts/what-a-concept-actually-costs/
+=====================================================================
+
+The most expensive part of a concept-based classifier is not the training run. It is the human effort of writing the example phrases that define each concept, and those phrases become the entire definition of what the model believes the concept means. This post looks at what that costs and why it matters.
+
+A concept is treated as a distribution rather than a single point. The centroid captures the average, and the per-dimension variance captures where the examples agreed and where they did not, using Bessel's correction so small samples do not look more certain than they are. The post argues that the variance is one of the most useful outputs of the process, and that most interfaces discard it.
+
+The central point is that a classifier's coverage reflects who wrote it. Thin populations produce unstable readings, and writing phrases cannot be easily parallelised without losing shared judgement. The post proposes practical fixes: multiple writers per concept with disagreements preserved, minimum population sizes before variance is reported, and vocabulary coverage tracked as a first-class metric.
+
+Takeaway: a model's uncertainty should be visible, and the people shaping its definitions should be accounted for.
+
+#MachineLearning #DataQuality #AIEngineering #HumanInTheLoop #Embeddings
+
+
+=====================================================================
+6. Welcome to "Not The LinkedIn Newsletter!"
+   https://blog.foreshock.io/posts/why-this-blog-is-not-a-newsletter/
+=====================================================================
+
+This blog is a research log rather than a marketing newsletter. Its purpose is to share work while it is still in progress, so colleagues can weigh in before decisions become costly to revisit. The post explains why open research should not be curated only for the audience of investors, and why the reasoning behind decisions matters as much as the results.
+
+The publishing principles are concrete. The site sets no cookies, runs no analytics, and loads no third-party fonts or scripts. The Atom and JSON feeds are the subscription, and there is no email list. Every measured number states how it was measured, and any number that is not yet reliable is labelled provisional. Posts are CC-0 dedicated to the public domain, and the code is Apache 2.0 licensed.
+
+The post applies the project's own thesis to its publishing: a project arguing that classification should not require sending content to third parties should not report on its readers either.
+
+Takeaway: if you want to see the reasoning between releases, not just the polished wins, this is the place to follow.
+
+#OpenScience #Privacy #AIGovernance #OpenSource #ResearchTransparency

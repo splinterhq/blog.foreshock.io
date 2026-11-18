@@ -260,8 +260,7 @@ The "Red Team" is made up entirely of volunteers that I will be leading myself. 
  
 We will be working entirely in conjunction with the companies themselves, and I will represent the group as someone widely-recognized in the field of inclusive research and "big community" applications.
 
-Phrases that you contribute will be used to Train Aldous 2.0, a Metric DACE (Diagonal Affective Covariance Estimation) model
-on precise classification and used to project the vectors your phrases illustrate orthogonally onto specimen responses being examined for collapse. 
+Phrases that you contribute will be used to Train "rain", a Metric DACE (Diagonal Affective Covariance Estimation) model created to help explore the space. It will allow us to detect the patterns and project the vectors your phrases illustrate orthogonally onto specimen responses being examined for 'collapse,' which is how we prove they were beyond "_almost certainly there_" which is the most objective water mark you can hope to strike in a space that exists purely to be interpreted. 
 
 Phrases will be distributed under the terms of the [Apache2 Software License](https://blog.foreshock.io/licensing/). Please also familiarize yourself with the project's [code of conduct](https://codeberg.org/timthepost/semsage/src/branch/main/CODE_OF_CONDUCT.md) to answer any questions about safety or situational expectations.
 
